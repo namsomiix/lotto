@@ -1,0 +1,49 @@
+<p>
+  {{getName()}}
+  {{1+1}}
+</p>
+
+<button [disabled]="disable" type="button">Disable</button>
+
+<table border="1">
+  <tr>
+    <td [attr.colspan]="1+1"> Two </td>
+  </tr>
+  <tr>
+    <td>one</td>
+    <td>two</td>
+  </tr>
+</table>
+<!--
+<div *ngIf="isRed">
+  <div class="red"> RED </div>
+  <div [ngClass]="{'red': isRed}"> RED </div>
+</div>
+-->
+
+
+<div *ngIf="showRed">
+    <!--<div class="red"> RED </div>-->
+    <div [ngClass]="{'red': isRed}"> RED </div>
+  </div>
+  
+
+<div (keyup) = "0">
+  Keyint
+  <input #myInput> {{myInput.value}}
+</div>
+
+<div>
+  <input [(ngModel)]="message"> {{message}}
+</div>
+<div>
+    <input [ngModel]="message"> {{message}}
+</div>
+
+<ul *ngFor="let n of names">
+  <li>{{n}}</li>
+</ul>
+
+{{money | number:'1.3-3'}}
+<br>
+{{toDay | date:'dd-MM-yyyy'}}

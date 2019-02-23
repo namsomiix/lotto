@@ -1,49 +1,29 @@
-<p>
-  {{getName()}}
-  {{1+1}}
-</p>
 
-<button [disabled]="disable" type="button">Disable</button>
-
-<table border="1">
-  <tr>
-    <td [attr.colspan]="1+1"> Two </td>
-  </tr>
-  <tr>
-    <td>one</td>
-    <td>two</td>
-  </tr>
-</table>
-<!--
-<div *ngIf="isRed">
-  <div class="red"> RED </div>
-  <div [ngClass]="{'red': isRed}"> RED </div>
+<div class="container">
+    <form [formGroup]="formGroup"> 
+        <div class="form-group"  >
+          <label class="control-label">งวดวันที่</label>
+          <select class="form-control" formControlName="period">
+            <option value="20190201">01 กุมภาพันธ์ 2562</option>
+            <option value="20190216">16 กุมภาพันธ์ 2562</option>
+          </select>
+        </div>
+        <div class="form-group"> 
+          <label class="control-label">เลขล๊อตเตอร์รี่</label>
+          <input class="form-control" formControlName="lottoNumber">
+        </div>
+        <div class="row">
+            <div class = "col-sm-6 form-group">
+            <button class="btn btn-primary btn-block" (click)="checkLotto()">ตรวจ</button>
+          </div>
+          <div class = "col-sm-6 form-group">
+            <button class="btn btn-secondary btn-block">ล้าง</button>
+          </div>
+        </div>
+      </form>
+      <div>
+        <ul *ngFor="let r of result">
+          <li>รางวันที่ 1 : {{r.bigPrize}} รางวัลเลขท้าย 3 ตัว : {{r.lastThreeDigitPrize}}</li>
+        </ul>
+      </div>
 </div>
--->
-
-
-<div *ngIf="showRed">
-    <!--<div class="red"> RED </div>-->
-    <div [ngClass]="{'red': isRed}"> RED </div>
-  </div>
-  
-
-<div (keyup) = "0">
-  Keyint
-  <input #myInput> {{myInput.value}}
-</div>
-
-<div>
-  <input [(ngModel)]="message"> {{message}}
-</div>
-<div>
-    <input [ngModel]="message"> {{message}}
-</div>
-
-<ul *ngFor="let n of names">
-  <li>{{n}}</li>
-</ul>
-
-{{money | number:'1.3-3'}}
-<br>
-{{toDay | date:'dd-MM-yyyy'}}

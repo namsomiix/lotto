@@ -1,5 +1,12 @@
 
 <div class="container">
+  <h1>{{title}}</h1>
+  <div *ngIf="wasBigPrize">
+    <span>คุณถูกรางวัลที่หนึ่ง</span>
+  </div>
+  <div *ngIf="wasLastThreeDigitPrize">
+      <span>คุณถูกรางวัลเลขท้าย 3 ตัว</span>
+    </div>
     <form [formGroup]="formGroup"> 
         <div class="form-group"  >
           <label class="control-label">งวดวันที่</label>
@@ -17,7 +24,7 @@
             <button class="btn btn-primary btn-block" (click)="checkLotto()">ตรวจ</button>
           </div>
           <div class = "col-sm-6 form-group">
-            <button class="btn btn-secondary btn-block">ล้าง</button>
+            <button class="btn btn-secondary btn-block" (click)="onClear()">ล้าง</button>
           </div>
         </div>
       </form>

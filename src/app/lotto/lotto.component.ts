@@ -37,8 +37,31 @@ export class LottoComponent implements OnInit {
     }
     else
     {
-      this.result = this.lottoService.getAll();
+      //this.result = this.lottoService.getAll();
+      //this.lottoService.getAll().subscribe(function() {},function{});
+      this.lottoService.getAll().subscribe(
+        (result: Lotto[]) => {
+          const period = this.formGroup.get('period').value;
+          const lottoNumber: string = this.formGroup.get('lottoNumber').value;
+    
+          this.result = result;
 
+          const lotto = this.result.find((item:Lotto) => {
+            return item.period === period;
+          });
+    
+          if(lotto){
+            if(lotto.bigPrize === lottoNumber){
+              this.wasBigPrize = true;
+            }
+            if(lotto.lastThreeDigitPrize ===lottoNumber.substr(3))
+            {
+              this.wasLastThreeDigitPrize = true;
+            }
+          }
+      }, () => {
+
+      });
       const period = this.formGroup.get('period').value;
       const lottoNumber: string = this.formGroup.get('lottoNumber').value;
 

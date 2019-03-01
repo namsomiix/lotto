@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Lotto } from './lotto';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LottoService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { 
+    
+  }
 
-  getAll(): Lotto[] {
-    return [
-      {period:'20190201',bigPrize:'123456',lastThreeDigitPrize:'456'},
-      {period:'20190216',bigPrize:'654321',lastThreeDigitPrize:'321'}
-  ];
+  getAll(): Observable<Lotto[]> {
+   return this.http.get<Lotto[]>('http://www.mocky.io/v2/5c6bc21c320000fb1cbef5e1');
   }
 }
